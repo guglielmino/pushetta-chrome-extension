@@ -1,0 +1,27 @@
+{
+  "name": "Pushetta for Chrome",
+  "version": "1.0",
+  "description":
+    "Handle push notifications from Pushetta API.",
+  "icons": {"16": "16.png", "48": "48.png", "128": "128.png"},
+  "permissions": [
+  	"storage",
+  	"gcm",
+    "notifications",
+    "https://www.pushetta.com/",
+    "http://www.pushetta.com/",
+    "http://localhost/*"
+  ],
+  "externally_connectable": {
+    "ids": ["*"],
+    "matches": ["*://*.pushetta.com/*","*://localhost:*/*","*://127.0.0.1:*/*"]
+  },
+  "options_page": "options.html",
+  "background": { "scripts": ["background.js"] },
+  "manifest_version": 2,
+
+  // crbug.com/134315
+  "web_accessible_resources": [
+    "48.png"
+  ]
+}
