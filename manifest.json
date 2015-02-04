@@ -4,6 +4,7 @@
   "description":
     "Handle push notifications from Pushetta API.",
   "icons": {"16": "16.png", "48": "48.png", "128": "128.png"},
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAn1reWKcbiKa/zW0xH+pwbbNI5YDBjVotP0zqTalBkzfM68Byup5KFgXRERsa++GamwCl5HpA2f1cjEDHybOlkeNQigvgIOMK2B99skKrhLa9hkrDRwB/Hru9qlZ8I5fBZVytf+sTTayT/dS2uuRlPa6NPJPIwEfdbLesx9ngnFqypAUCfo9Gy/nONVoTNzAGcL6rs8dxO25bpZXCqaK3BD0iEJh+1ameTJaDtFqsbMdigwr0uZH1wEv+AZWoNCUfncu+6uV6Ku5Hl4WpxHgTOl0AwGbDnAnZHsIfpc2K/7cmuL5Ul1eSfDVIdbarieDd0+jFPtLZJhKihRujs0HgEwIDAQAB",
   "permissions": [
   	"storage",
   	"gcm",
