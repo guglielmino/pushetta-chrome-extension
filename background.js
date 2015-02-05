@@ -1,6 +1,6 @@
 var EXTENSION_ID="365056580234"
 var browserId = "";
-var post_url = "http://localhost:8000/browser/register";
+var post_url = "http://www.pushetta.com/browser/register";
 
 var data_pack = {}
 
@@ -36,19 +36,6 @@ function generateUUID() {
 };
 
 
-// Startup
-
-/*
- * Handler for push notifications
- */
-chrome.gcm.onMessage.addListener(function(message) {
-	show(message);
-});
-
-/*
- * Handler for pushetta web page messages
- */
-
 
 function send_data(){
 	if( data_pack["channel_name"] && 
@@ -76,7 +63,7 @@ function send_data(){
 }
 
 
-
+// Startup
 chrome.storage.sync.get('brid', function(items) {
 		var brid = items.brid;
 		if (brid) {
@@ -91,22 +78,23 @@ chrome.storage.sync.get('brid', function(items) {
 			browserId = brid;
 			console.log("id " + brid);
 
+			// Handler for GCM mesages (push notifications)
+			chrome.gcm.onMessage.addListener(function(message) {
+				show(message);
+			});
+
+			// Handler for message from webpage
 			chrome.runtime.onMessageExternal.addListener(
 			  	function(request, sender, sendResponse) {
-			  		console.log("EXT message received");
+
 			  		if (request.channelName && request.username){
 			  			data_pack["channel_name"] = request.channelName;
 			  			data_pack["username"] = request.username;
-			  			console.log("Received " + data_pack["channel_name"] + " - " + data_pack["username"]);
-
+			  		
 			  			send_data();
+			  			sendResponse({success: true});
 			  		}
 			 });
-
-			chrome.runtime.onConnectExternal.addListener(function(port) {
-    			console.log("message received");
-			});
-
 
 			// Start of registration process
 			var senderIds = [EXTENSION_ID];
