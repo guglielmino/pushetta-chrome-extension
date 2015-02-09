@@ -12,7 +12,6 @@ function registerCallback(registrationId) {
     }
 
     data_pack["registrationId"] = registrationId;
-    send_data();
 }
 
 function show(message) {
@@ -49,40 +48,8 @@ chrome.gcm.onMessage.addListener(function(message) {
  */
 var Operations = {}
 
-Operations.subscribe= function subscribeChannel(channel_name, username){
-	var res = false;
- 	if (channel_name &&
-        username &&
-        data_pack["registrationId"]) {
-
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", post_url, true);
-
-        xhr.onreadystatechange = function() {
-
-            if (xhr.readyState == 4) {
-                //console.log(xhr.responseText)
-            }
-        }
-        data = {
-            'channel': channel_name,
-            'token': data_pack["registrationId"],
-            'name': username,
-            'browser': 'chrome',
-            'device_id': browserId
-        };
-
-        xhr.send(JSON.stringify(data));
-        // TODO: Handle with callback
-        res = true;
-    }
-
-	return res;
-
-}
-
-Operations.unsubcribe= function unsubscribeChannel(channel_name, userame){
-	console.log("unsubscribe");
+Operations.gettoken= function getRegistrationToken (argument) {
+	return { 'device_id' : browserId, 'token' : data_pack.registrationId };
 }
 
 
@@ -106,16 +73,11 @@ chrome.storage.sync.get('brid', function(items) {
 
         chrome.runtime.onMessageExternal.addListener(
             function(request, sender, sendResponse) {
-            	var resp = false;
+            	var resp = {};
             	if (request.op){
-            		if (request.channelName && request.username) {
-            			var resp = Operations[request.op](request.channelName, request.username);
-            		}
-
+            		resp = Operations[request.op](request.channelName, request.username);
             	}
-            	sendResponse({
-                        "success": resp
-                });
+            	sendResponse(resp);
         });
 
         // Start of registration process
