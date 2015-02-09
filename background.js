@@ -1,16 +1,13 @@
 
-var EXTENSION_ID="365056580234";
+var EXTENSION_ID = "365056580234";
 var browserId = "";
-var post_url = "http://localhost:8000/browser/register";
+var post_url = "http://www.pushetta.com/browser/register";
 
 var data_pack = {}
 
 function registerCallback(registrationId) {
-    console.log("reg id" + registrationId);
     if (chrome.runtime.lastError) {
-        // When the registration fails, handle the error and retry the
-        // registration later.
-        console.log("reg error" + chrome.runtime.lastError);
+        console.log("reg error " + chrome.runtime.lastError.message);
         return;
     }
 
@@ -46,14 +43,16 @@ chrome.gcm.onMessage.addListener(function(message) {
     show(message);
 });
 
+
 /*
- * Handler for pushetta web page messages
+ *  Operations for called by communications with webpage
  */
+var Operations = {}
 
-
-function send_data() {
-    if (data_pack["channel_name"] &&
-        data_pack["username"] &&
+Operations.subscribe= function subscribeChannel(channel_name, username){
+	var res = false;
+ 	if (channel_name &&
+        username &&
         data_pack["registrationId"]) {
 
         var xhr = new XMLHttpRequest();
@@ -66,15 +65,24 @@ function send_data() {
             }
         }
         data = {
-            'channel': data_pack["channel_name"],
+            'channel': channel_name,
             'token': data_pack["registrationId"],
-            'name': data_pack["username"],
+            'name': username,
             'browser': 'chrome',
             'device_id': browserId
         };
 
         xhr.send(JSON.stringify(data));
+        // TODO: Handle with callback
+        res = true;
     }
+
+	return res;
+
+}
+
+Operations.unsubcribe= function unsubscribeChannel(channel_name, userame){
+	console.log("unsubscribe");
 }
 
 
@@ -98,20 +106,17 @@ chrome.storage.sync.get('brid', function(items) {
 
         chrome.runtime.onMessageExternal.addListener(
             function(request, sender, sendResponse) {
-                console.log("EXT message received");
-                if (request.channelName && request.username) {
-                    data_pack["channel_name"] = request.channelName;
-                    data_pack["username"] = request.username;
-                    console.log("Received " + data_pack["channel_name"] + " - " + data_pack["username"]);
+            	var resp = false;
+            	if (request.op){
+            		if (request.channelName && request.username) {
+            			var resp = Operations[request.op](request.channelName, request.username);
+            		}
 
-                    send_data();
-                }
-            });
-
-        chrome.runtime.onConnectExternal.addListener(function(port) {
-            console.log("message received");
+            	}
+            	sendResponse({
+                        "success": resp
+                });
         });
-
 
         // Start of registration process
         var senderIds = [EXTENSION_ID];

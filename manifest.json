@@ -1,11 +1,9 @@
 {
   "name": "Pushetta for Chrome",
   "version": "1.0",
-   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvwpaCaUF2OEWFjVNgk3gBIIfYpOH1wfsx7lQLQuY6BNmtDT4j9c+IzSuXg1GdjzXstdAUoM8Pm1NNHR/DODuQiV9U6T2NgAM2cEIdG9b41RCkx8VZUGbqXZY0Xtut7et1EbaLPDhSXFEL5UDKFAKxUXsCc8ByyykOhAIFjeoFwYOjSKy/emvgbDuET7LVecgmwkUpXK2pv4gfanEpCuO4gm2kMUMjfxlOLuJfTX8VT62QtN9r4tq3DMGQzSDI5EjCk8/6FVCwgAeWYvGWILjKVx79MDe5LCJR4BL8Rjysg1jpDda4vIVIqRXpasv8zJmfcz3hXlpCAj2QfCo6xsIYQIDAQAB",
-  "description":
-    "Handle push notifications from Pushetta API.",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvwpaCaUF2OEWFjVNgk3gBIIfYpOH1wfsx7lQLQuY6BNmtDT4j9c+IzSuXg1GdjzXstdAUoM8Pm1NNHR/DODuQiV9U6T2NgAM2cEIdG9b41RCkx8VZUGbqXZY0Xtut7et1EbaLPDhSXFEL5UDKFAKxUXsCc8ByyykOhAIFjeoFwYOjSKy/emvgbDuET7LVecgmwkUpXK2pv4gfanEpCuO4gm2kMUMjfxlOLuJfTX8VT62QtN9r4tq3DMGQzSDI5EjCk8/6FVCwgAeWYvGWILjKVx79MDe5LCJR4BL8Rjysg1jpDda4vIVIqRXpasv8zJmfcz3hXlpCAj2QfCo6xsIYQIDAQAB",
+  "description": "Handle push notifications for Pushetta API.",
   "icons": {"16": "16.png", "48": "48.png", "128": "128.png"},
-  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAn1reWKcbiKa/zW0xH+pwbbNI5YDBjVotP0zqTalBkzfM68Byup5KFgXRERsa++GamwCl5HpA2f1cjEDHybOlkeNQigvgIOMK2B99skKrhLa9hkrDRwB/Hru9qlZ8I5fBZVytf+sTTayT/dS2uuRlPa6NPJPIwEfdbLesx9ngnFqypAUCfo9Gy/nONVoTNzAGcL6rs8dxO25bpZXCqaK3BD0iEJh+1ameTJaDtFqsbMdigwr0uZH1wEv+AZWoNCUfncu+6uV6Ku5Hl4WpxHgTOl0AwGbDnAnZHsIfpc2K/7cmuL5Ul1eSfDVIdbarieDd0+jFPtLZJhKihRujs0HgEwIDAQAB",
   "permissions": [
   	"storage",
   	"gcm",
