@@ -1,6 +1,6 @@
 {
   "name": "Pushetta for Chrome",
-  "version": "1.0",
+  "version": "1.1",
   "description": "Handle push notifications for Pushetta API.",
   "icons": {"16": "16.png", "48": "48.png", "128": "128.png"},
   "permissions": [
