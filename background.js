@@ -48,7 +48,7 @@ chrome.gcm.onMessage.addListener(function(message) {
  */
 var Operations = {}
 
-Operations.gettoken= function getRegistrationToken (argument) {
+Operations.gettoken = function getRegistrationToken (argument) {
 	return { 'device_id' : browserId, 'token' : data_pack.registrationId };
 }
 
